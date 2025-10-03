@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitties</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <div id="container"> 
+
+    <h1>Meet the Kitties!</h1>
+
+   <div class="cat-gallery">
+        <div class="cat-card">
+            <img src="images/fire-sit.png" class="cat-thumb" data-stat="images/fire-cat.png" alt="Fire Cat">
+            <p>Fire Cat</p>
+        </div>
+        <div class="cat-card">
+            <img src="images/plant-sit.png" class="cat-thumb" data-stat="images/plant-cat.png" alt="Plant Cat">
+            <p>Plant Cat</p>
+        </div>
+        <div class="cat-card">
+            <img src="images/water-sit.png" class="cat-thumb" data-stat="images/water-cat.png" alt="Seaside Cat">
+            <p>Seaside Cat</p>
+        </div>
+        <div class="cat-card">
+            <img src="images/moon-sit.png" class="cat-thumb" data-stat="images/moon-cat.png" alt="Moon Cat">
+            <p>Moon Cat</p>
+        </div>
+    </div>
+
+    
+    <!-- Modal -->
+    <div id="modal">
+        <span id="close-modal">&times;</span>
+        <img id="modal-img" src="" alt="Cat Stat">
+        <p id="modal-description"></p>
+    </div>
+
+    <button onclick="location.href='index.html'">Back to Quiz</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-img");
+            const modalDesc = document.getElementById("modal-description");
+            const closeModal = document.getElementById("close-modal");
+
+            document.querySelectorAll(".cat-thumb").forEach(thumb => {
+                thumb.addEventListener("click", () => {
+                    modal.style.display = "flex";               // Show modal
+                    modalImg.src = thumb.dataset.stat;          // Show larger image
+                    modalDesc.textContent = thumb.dataset.description; // Show description
+                });
+            });
+
+            closeModal.addEventListener("click", () => {
+                modal.style.display = "none";                  // Hide modal
+            });
+
+            modal.addEventListener("click", (e) => {
+                if (e.target === modal) modal.style.display = "none"; // Close when clicking outside image
+            });
+        });
+    </script>
+
+  <footer>Made by Lynn Le</footer>
+
+</body>
+
+</html>
